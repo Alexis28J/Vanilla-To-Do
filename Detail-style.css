@@ -24,29 +24,25 @@ body {
     padding: 16px;
 }
 
-.to-do-card {
-    margin-bottom: 4px;
-    padding: 4px;
+header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 4px;
 }
 
-.detail-btn {
+.back-link {
     background-color: aliceblue;
     border: 1px solid black;
     border-radius: 50%;
     font-size: x-large;
     width: 30px;
     height: 30px;
-    line-height: 10px;
+    text-decoration: none;
+    color: black;
+    line-height: 30px;
 }
 
-/* Il selettore CSS :hover serve a applicare stili speciali a un elemento quando il cursore del mouse (o un altro dispositivo di puntamento) 
-ci passa sopra, creando feedback visivi immediati come cambi di colore, dimensioni, ombreggiature, o animazioni complesse per migliorare l'interattività 
-e l'esperienza utente su link, pulsanti, immagini e altri elementi di un sito web, tutto senza usare JavaScript. */
-.detail-btn:hover {
+.back-link:hover{
     background-color: black;
     color: aliceblue;
 }

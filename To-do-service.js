@@ -1,7 +1,15 @@
 function getAllToDos() {
 
-    const apiUrl = "https://694115cf686bc3ca81658f6e.mockapi.io/api/v1/Todos"  
+    const apiUrl = "https://694115cf686bc3ca81658f6e.mockapi.io/api/v1/Todos";
     //Per copiare questo url, sono andato dentro del mio progetto ('To Do App') nel sito mockApi e ho cliccato su Todos (sopra la barretta) 
     //e si mi è aperto una pagina con tutti i dati (api). Infine ho copiato l'url della pagina.
     
+    return fetch(apiUrl)
+    .then(response => response.json())
+    //.then(result => console.log(result))  //per vedere cosa mi arriva dal server
+    .then(result => result)  //result è il nome che do io alla risposta che mi arriva dal server già convertita in json
+    //.then(result => displayToDos(result))  //per vedere i dati a schermo
+    //.then(result => result) //per ritornare i dati a chi mi ha chiamato (Script.js)
+    .catch(error => console.log('Aiuuuuuuuuuto!', error));
+
 }

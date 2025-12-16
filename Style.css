@@ -20,4 +20,21 @@ body{
 
 .page{
     max-width: 800px;
+    padding: 16px;
+}
+
+.to-do-card{
+margin-bottom: 4px;
+padding: 4px;
+gap: ;
+}
+
+.detail-btn{
+    background-color: aliceblue;
+    border: 1px solid black;
+    border-radius: 50%;
+    font-size: x-large;
+    width: 30px;
+    height: 30px;
+    line-height: 10px;
 }

@@ -27,4 +27,7 @@ function getToDo(id) {   //id è l'id del to-do che voglio prendere
 }
 
 
-// TASK:  Mettere le altre voci dentro del main
+//TASK:  
+//1)Mettere le altre voci dentro del main
+//2)aggiungere due tasti nella home (lista di To Do)
+//3)mettere in ordine dal più nuovo al più vecchio in base alla creationDate

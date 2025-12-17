@@ -9,3 +9,35 @@ Una Mock API serve a simulare il comportamento di un'API reale (back-end) che no
 - https://blank.page/  (opzionale)  ---  A simple text editor designed for creative writing
 
 - https://www.compart.com/en/unicode/category/So   ---  caratteri unicode
+
+
+-
+onclick
+
+    un singolo listener
+
+    può facilmente controllare la sua presenza
+
+    può essere facilmente rimosso con l'accesso solo all'elemento (assegnare la proprietà a null)
+
+    può essere impostato tramite HTML con attributo
+
+    ascolta sempre gli eventi quando fa bubbling
+
+addEventListener()
+
+    supporta più listener
+
+    nessun modo per controllare se i listener esistono
+
+    per rimuovere è necessario l'accesso all'elemento, alla funzione listener originale e potenzialmente a un flag useCapture (options.capture)
+
+    ...anche se supporta la rimozione con AbortControllers
+
+    non riflesso in HTML
+
+    supporta l'ascolto degli eventi quando si cattura o si fa bubbling
+
+    supporta altre opzioni come passive e once
+
+Come ha detto albedoa, il supporto per più listener è ciò che conferisce davvero ad addEventListener il vantaggio. Tuttavia, per le cose veloci e sporche, la variazione onclick può essere utile. 

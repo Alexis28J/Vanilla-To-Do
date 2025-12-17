@@ -13,6 +13,10 @@ function displayToDo(todo) {
     //creationDataMain.innerHTML = todo.creationDate;
     creationDataMain.innerHTML = formaDate(todo.creationDate);
 
+    const endDataMain = document.getElementById('todo-enddata');
+    //endDataMain.innerHTML = todo.endDate;
+    endDataMain.innerHTML = formaDate(todo.endDate);
+
     const doneMain = document.getElementById('todo-done');
     doneMain.innerHTML = todo.done;
 
@@ -23,10 +27,6 @@ function displayToDo(todo) {
         doneMain.innerHTML = 'Da completare';
     }
 
-    const endDataMain = document.getElementById('todo-enddata');
-    //endDataMain.innerHTML = todo.endDate;
-    endDataMain.innerHTML = formaDate(todo.endDate);
-
     // const colorMain = document.getElementById('todo-color');
     // colorMain.innerHTML = todo.color;
     const colorDivMain = document.getElementById('todo-color');
@@ -34,7 +34,7 @@ function displayToDo(todo) {
 }
 
 function formaDate(dateISO) {  //Funzione per cambiare il formato delle date a uno più leggibile
-    const date = new Date(dateISO);
+    const date = new Date(dateISO);  //dateISO è una stringa in formato ISO 8601 (es: "2024-06-15T00:00:00Z")
 
     const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
     return formattedDate;

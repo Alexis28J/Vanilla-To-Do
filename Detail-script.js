@@ -10,17 +10,42 @@ function displayToDo(todo) {
     descriptionMain.innerHTML = todo.description;
 
     const creationDataMain = document.getElementById('todo-creationdata');
-    creationDataMain.innerHTML = todo.creationDate;
+    //creationDataMain.innerHTML = todo.creationDate;
+    creationDataMain.innerHTML = formaDate(todo.creationDate);
 
     const doneMain = document.getElementById('todo-done');
     doneMain.innerHTML = todo.done;
 
+    //invece che dica true o false, possiamo personalizzare il messaggio
+    if (todo.done) { //se todo.done è true
+        doneMain.innerHTML = 'Completato';
+    } else {
+        doneMain.innerHTML = 'Da completare';
+    }
+
     const endDataMain = document.getElementById('todo-enddata');
-    endDataMain.innerHTML = todo.endDate;
+    //endDataMain.innerHTML = todo.endDate;
+    endDataMain.innerHTML = formaDate(todo.endDate);
 
-    const colorMain = document.getElementById('todo-color');
-    colorMain.innerHTML = todo.color;
+    // const colorMain = document.getElementById('todo-color');
+    // colorMain.innerHTML = todo.color;
+    const colorDivMain = document.getElementById('todo-color');
+    colorDivMain.style.backgroundColor = todo.color; //imposto lo sfondo del div con l'id todo-color al colore del to-do
+}
 
+function formaDate(dateISO) {  //Funzione per cambiare il formato delle date a uno più leggibile
+    const date = new Date(dateISO);
+
+    const formattedDate = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+    return formattedDate;
+
+    //O con un metodo più semplice:
+    //const date = new Date(dateISO);
+    //const options = {
+    //year: "numeric",
+    //month: "numeric",
+    //day: "numeric",
+    //};
 }
 
 

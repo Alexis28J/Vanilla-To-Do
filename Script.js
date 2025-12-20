@@ -155,3 +155,6 @@ function daysLeft (dateISO){
 //TASK:
 //1)PERSONALIZZARE LA TO DO LIST
 //2)AGGIUNGERE UN BOTTONE DELETE NELLA PAGINA DI DETTAGLIO
+//per eliminare il to-do selezionato dal database e tornare alla pagina principale
+//per fare ciò, devo creare una nuova funzione in Delete.js che elimina un to-do dal database
+//Delete.js sarà un file condiviso tra le due pagine (index.html e detail.html)

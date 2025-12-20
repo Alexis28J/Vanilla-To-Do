@@ -12,6 +12,10 @@
 
     <div class="page">
         <header>
+           <button onclick="deleteTodo(todoId)">Elimina</button>
+            <!-- deleteTodo(5) è una funzione che elimina il to-do con id 5 -->
+             <!-- quindi passo todoId come parametro -->
+
             <a class="back-link" href="./">🠄</a>
             <!-- ./  ->  vado alla home -->
             <h1 id="todo-title"></h1>
@@ -56,6 +60,7 @@
 
 </body>
 
+<script src="./Delete.js"></script>
 <script src="./To-do-service.js"></script>
 <script src="./Detail-script.js"></script>
 

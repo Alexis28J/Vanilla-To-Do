@@ -10,6 +10,7 @@ Una Mock API serve a simulare il comportamento di un'API reale (back-end) che no
 
 - https://www.compart.com/en/unicode/category/So   ---  caratteri unicode
 
+- https://github.com/mockapi-io/docs/wiki/Quick-start-guide - METODI (tra cui DELETE). Il prof. ha usato questo metodo per fare il task DELETE.
 
 -
 onclick

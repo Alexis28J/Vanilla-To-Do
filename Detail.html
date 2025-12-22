@@ -12,7 +12,13 @@
 
     <div class="page">
         <header>
-           <button onclick="deleteTodo(todoId)">Elimina</button>
+            <div>
+                <button id="status-btn" onclick="changeStatus()">Completa</button>
+                <button onclick="deleteTodoAndRedirect()">Elimina</button>
+            </div>   
+            
+            <!-- Ho sostituito questo codice con quello del prof. -->
+           <!-- <button onclick="deleteTodo(id)">Elimina</button> -->
             <!-- deleteTodo(5) è una funzione che elimina il to-do con id 5 -->
              <!-- quindi passo todoId come parametro -->
 
@@ -60,7 +66,7 @@
 
 </body>
 
-<script src="./Delete.js"></script>
+<!-- <script src="./Delete.js"></script> -->
 <script src="./To-do-service.js"></script>
 <script src="./Detail-script.js"></script>
 

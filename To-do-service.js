@@ -21,9 +21,32 @@ function getToDo(id) {   //id è l'id del to-do che voglio prendere
 
     return fetch(apiUrl)  //la fetch è la stessa di prima
         .then(response => response.json())
-        .then(result => result) 
+        .then(result => result)
         .catch(error => console.log('Aiuuuuuuuuuto!', error));
 
 }
 
 
+function deleteTodo(id) {
+
+    const apiUrl = "https://694115cf686bc3ca81658f6e.mockapi.io/api/v1/Todos/" + id;
+
+    return fetch(apiUrl, { method: 'DELETE' })
+        .then(response => response.json())
+        .then(result => result)
+        .catch(error => console.error('Aiuuutoooo!', error))
+}
+
+
+function changeDoneStatus(id, newStatus) {
+
+    const apiUrl = "https://694115cf686bc3ca81658f6e.mockapi.io/api/v1/Todos/" + id;
+
+    return fetch(apiUrl, {
+        method: 'PATCH', //o PUT
+        headers: { 'content-type': 'application/json' },  //il contenuto che invierò sarà di tipo Json
+        body: JSON.stringify({ done: newStatus })
+    }).then(response => response.json())
+      .then(result => result)
+      .catch(error => console.log('Aiuuuto!', error));
+}

@@ -27,6 +27,13 @@ function displayToDo(todo) {
         doneMain.innerHTML = 'Da completare';
     }
 
+    const statusBtn = document.getElementById('status-btn');
+    if (todo.done) {
+        statusBtn.innerHTML = "Riattiva";
+    }else{
+        statusBtn.innerHTML = "Completa";
+    }
+
     // const colorMain = document.getElementById('todo-color');
     // colorMain.innerHTML = todo.color;
     const colorDivMain = document.getElementById('todo-color');
@@ -65,5 +72,29 @@ const id = searchParams.get('todoId');
 
 //console.log(id);
 
-getToDo(id).then(result => displayToDo(result));  //non confondere con displayToDos() che è "plurale", questa funzione è "singolare"
+//getToDo(id).then(result => displayToDo(result));  //non confondere con displayToDos() che è "plurale", questa funzione è "singolare"
 
+let selectedTodo;
+
+getToDo(id).then(result => {
+    selectedTodo = result;
+    displayToDo(result)
+});
+
+
+function deleteTodoAndRedirect() {
+
+    if (confirm("Vuoi veramente cancellare il todo???")) {
+        deleteTodo(selectedTodo.id).then(_ => {
+            window.location.assign('./')
+        });  
+    }
+}
+
+function changeStatus() {
+    changeDoneStatus(selectedTodo.id, !selectedTodo.done)
+    .then(_ => {
+        selectedTodo.done = !selectedTodo.done;
+        displayToDo(selectedTodo);
+    })
+}

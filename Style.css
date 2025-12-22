@@ -33,7 +33,7 @@ body {
     gap: 4px;
 }
 
-.detail-btn {
+.action {
     background-color: aliceblue;
     border: 1px solid black;
     border-radius: 50%;
@@ -46,7 +46,7 @@ body {
 /* Il selettore CSS :hover serve a applicare stili speciali a un elemento quando il cursore del mouse (o un altro dispositivo di puntamento) 
 ci passa sopra, creando feedback visivi immediati come cambi di colore, dimensioni, ombreggiature, o animazioni complesse per migliorare l'interattività 
 e l'esperienza utente su link, pulsanti, immagini e altri elementi di un sito web, tutto senza usare JavaScript. */
-.detail-btn:hover {
+.action:hover {
     background-color: black;
     color: aliceblue;
 }

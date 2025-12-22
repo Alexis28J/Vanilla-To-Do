@@ -12,19 +12,19 @@ function displayToDos(todos) {
         const titleSpan = document.createElement('span');
         titleSpan.appendChild(document.createTextNode(todo.title));
 
-            //per creare una pallina di colore a fianco di titleSpan
-            const colorCircle = document.createElement('div'); 
-            colorCircle.style.display = 'inline-block';  //inline-block mi permette di mettere il div e il testo nella stessa riga
-            colorCircle.style.borderRadius = '50%';
-            colorCircle.style.width = '10px';
-            colorCircle.style.height = '10px';
-            colorCircle.style.marginLeft = '5px';
-            
-            colorCircle.style.backgroundColor = todo.color;
-            titleSpan.appendChild(colorCircle);
-        
+        //per creare una pallina di colore a fianco di titleSpan
+        const colorCircle = document.createElement('div');
+        colorCircle.style.display = 'inline-block';  //inline-block mi permette di mettere il div e il testo nella stessa riga
+        colorCircle.style.borderRadius = '50%';
+        colorCircle.style.width = '10px';
+        colorCircle.style.height = '10px';
+        colorCircle.style.marginLeft = '5px';
 
-            //titleSpan.style.backgroundColor = todo.color; //se voglio colorare lo sfondo del titolo al colore del to-do
+        colorCircle.style.backgroundColor = todo.color;
+        titleSpan.appendChild(colorCircle);
+
+
+        //titleSpan.style.backgroundColor = todo.color; //se voglio colorare lo sfondo del titolo al colore del to-do
 
         //titleSpan.style.textDecoration = 'line-through';  //Per mettere il testo barrato
         //Ma per mettere il testo barrato se il to-do è completato devo farlo qui, dentro displayToDos(), perché qui creo l'elemento titleSpan
@@ -41,10 +41,34 @@ function displayToDos(todos) {
 
         toDosContainer.appendChild(card);
 
+        const actionsDiv = document.createElement('div');
+        let compleActionIcon;
+        if (todo.done) {
+            compleActionIcon = "↺";
+        } else {
+            compleActionIcon = "🗸";
+        }
+
+        const completeBtn = document.createElement('button');
+        completeBtn.appendChild(document.createTextNode(compleActionIcon));
+        completeBtn.classList.add("action")
+
+        completeBtn.addEventListener('click', () => {
+            changeDoneStatus(todo.id, !todo.done)
+                .then(_ => {
+                    getAllToDos().then(results => {
+                        todos = results;
+                        displayToDos(todos)
+                    })
+                })
+        })
+
+        actionsDiv.appendChild(completeBtn);
+
         const detailBtn = document.createElement('button');
         detailBtn.appendChild(document.createTextNode('🠆'));      //🠆: carattere unicode (testo con effetto)
         //append e appendChild sono simili, ma appendChild accetta solo nodi, mentre append accetta anche stringhe
-        detailBtn.classList.add('detail-btn');
+        detailBtn.classList.add('action');
 
         detailBtn.addEventListener('click', () => {  //()=> {}) è una funzione freccia (arrow function) 
             window.location.assign('./Detail.html?todoId=' + todo.id)
@@ -54,10 +78,12 @@ function displayToDos(todos) {
         //assign è un metodo che carica un nuovo documento
         //?todoId= è un parametro che passo alla pagina Detail.html per identificare il to-do selezionato
 
-        card.appendChild(detailBtn);
+        actionsDiv.appendChild(detailBtn);
 
         //Se invece di un botone, voglio mettere un link:
         //Vedi repository del prof.  ---  detailLink
+
+        card.appendChild(actionsDiv);
 
         toDosContainer.appendChild(card);
 
@@ -143,7 +169,7 @@ function orderByCreationDate() {
 
 
 
-function daysLeft (dateISO){
+function daysLeft(dateISO) {
     const today = new Date();      //lo converto in milisecondi
     const endDate = new Date(dateISO);     //lo converto in milisecondi
     const endDaysLeft = endDate - today; //faccio la differenza

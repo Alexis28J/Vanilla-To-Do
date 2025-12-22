@@ -1,3 +1,7 @@
+// Ho SOSTITUITO questo codice con quello del Prof. perché il suo funziona PERFETTAMENTE.
+// https://github.com/mockapi-io/docs/wiki/Quick-start-guide - METODI (tra cui DELETE). Il prof. ha usato questo metodo per fare il task DELETE.
+
+
 // Recupera l'id del to-do dai parametri della URL
 const params = new URLSearchParams(window.location.search);
 const todoId = parseInt(params.get("todoId"));
@@ -32,7 +36,7 @@ const todoId = parseInt(params.get("todoId"));
 
 
 
-function deleteTodo(id) {
+function deleteTodo(id) {                      // CORREGGERE! SOLO REINDIRIZZA E NON ELIMINA I DATA
     if (!confirm("Vuoi davvero eliminare questo to-do?")) {
         return;
     }
@@ -42,6 +46,7 @@ function deleteTodo(id) {
 
     // Filtra via quello da eliminare
     todos = todos.filter(todo => todo.id !== id);
+   
 
     // Salva la lista aggiornata
     localStorage.setItem("todos", JSON.stringify(todos));

@@ -22,6 +22,10 @@ body {
 .page {
     max-width: 800px;
     padding: 16px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .to-do-card {
@@ -51,6 +55,11 @@ e l'esperienza utente su link, pulsanti, immagini e altri elementi di un sito we
     color: aliceblue;
 }
 
+
+.action-container{
+    display: flex;
+    justify-content: flex-end;
+}
 
 
 

@@ -50,3 +50,13 @@ function changeDoneStatus(id, newStatus) {
       .then(result => result)
       .catch(error => console.log('Aiuuuto!', error));
 }
+
+function createTodo(todo) {
+  return fetch('https://694115cf686bc3ca81658f6e.mockapi.io/api/v1/Todos/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(todo)
+  })
+  .then(response => response.json());
+}
+

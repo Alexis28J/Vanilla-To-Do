@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const newTodo = {
       title: title,
       description: description,
-      createdAt: new Date().toISOString, //  DATA AUTOMATICA
-      EndDate: date,
+      createdAt: new Date().toISOString(), //  DATA AUTOMATICA
+      endDate: date,
       color: color,
       completed: done
       
@@ -32,3 +32,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 });
+
+//CORREGGERE: SI CREA DOPPIO DATA DI CREAZIONE E DI SCADENZA NEL MOCKAPI

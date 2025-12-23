@@ -41,4 +41,15 @@ addEventListener()
 
     supporta altre opzioni come passive e once
 
-Come ha detto albedoa, il supporto per più listener è ciò che conferisce davvero ad addEventListener il vantaggio. Tuttavia, per le cose veloci e sporche, la variazione onclick può essere utile. 
+Come ha detto albedoa, il supporto per più listener è ciò che conferisce davvero ad addEventListener il vantaggio. Tuttavia, per le cose veloci e sporche, la variazione onclick può essere utile.
+
+
+Lezione di Martedì 23 dicembre 2025
+
+- Prima di fare l'update del fork, scaricare il codice del prof. e salvarlo. Poi si può aggiornare. (Per capire le modifiche che ha fatto oggi) 
+- Sostituire il nostro codice per quello del prof. e farsi aiutare dall'IA per capire i passaggi.
+- NB. Usare il proprio indirizzo mockAPI. Non quello del prof.  ---  USARE QUESTO:  https://694115cf686bc3ca81658f6e.mockapi.io/api/v1/Todos
+
+COMPITI PER LE VACANZE NATALIZIE:
+Riguardare tutto quello che abbiamo fatto finora. ESERCITARSI!
+

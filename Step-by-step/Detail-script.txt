@@ -1,0 +1,79 @@
+* Detail-script.js
+
+- Riga 1: 
+(import) Importo le funzioni che mi servono da To-do-service.js.
+
+
+- Riga 3:
+La differenza tra la funzione displayToDos() e displayToDo() è che la prima mostra una lista di to-do, mentre la seconda mostra i dettagli di un singolo to-do.
+A differenza di displayToDos(), qui non c'è bisogno di un ciclo for, perché sto mostrando i dettagli di un singolo to-do, non di una lista
+
+
+- Riga 12 e 20: 
+formaDate () è una funzione che formatta la data in modo più leggibile che ho definito sotto
+
+
+- Riga 42:
+Imposto lo sfondo del div con l'id todo-color al colore del to-do
+
+
+- Riga 45: 
+Funzione per cambiare il formato delle date a uno più leggibile
+
+
+- Riga 46: 
+dateISO è una stringa in formato ISO 8601 (es: "2024-06-15T00:00:00Z")
+
+
+- Riga 58:
+toLocaleDateString formatta la data secondo le convenzioni locali (in questo caso italiane).
+it-IT è il codice della lingua e del paese (italiano - Italia) e options sono le opzioni di formattazione che ho definito sopra.
+
+
+- Riga 65:
+La funzione deleteToDo viene importata da To-do-service.js.
+
+
+- Riga 66: 
+window.location.assign cambia la pagina corrente con quella indicata nel parametro.
+Dopo la cancellazione, torno alla pagina principale. '../' torna alla cartella precedente (la root del progetto).
+
+
+- Riga 72:
+changeDoneStatus è una funzione che accetta due parametri: id e nuovo stato ed effettua la chiamata al server. changeDoneStatus viene importata da To-do-service.js.
+selectedTodo.id è l'id del todo corrente, !selectedTodo.done è lo stato opposto a quello attuale. Se era true diventa false, se era false diventa true  
+_ è un parametro che non mi interessa usare (così lo indico con _).
+
+
+- Riga 71 fino a 77:
+Funzione changeStatus() per cambiare lo stato del todo. Con changeDoneStatus () cambio lo stato al contrario di quello attuale. 
+Quindi quando la promessa è risolta (cioè l'operazione è completata), aggiorno lo stato del todo selezionato e chiamo la funzione DisplayToDo per aggiornare la visualizzazione.
+
+
+- Riga 80: 
+Se clicco sul bottone, chiamo la funzione changeStatus che cambia lo stato del todo.
+
+
+- Riga 83:
+Se clicco sul bottone, chiamo la funzione deleteTodoAndRedirect che cancella il todo e mi riporta alla pagina principale.
+
+
+- Riga 87:
+searchParams è un oggetto che contiene tutti i parametri passati nella URL
+window.location.search prende la parte della URL che contiene i parametri (dopo il ?).
+URLSearchParams è un oggetto che mi permette di lavorare con i parametri della URL.
+location è un oggetto che rappresenta l'URL della pagina corrente.
+search è una proprietà di location che contiene la stringa dei parametri della URL.
+
+
+- Riga 90: 
+Prendo il valore del parametro todoId dalla URL - es: se la URL è Detail.html?todoId=3, allora id sarà 3.
+searchParams è l'oggetto che contiene tutti i parametri della URL. 
+todoId è il nome del parametro che ho passato nella pagina Detail.html cioè ?todoId= (vedi Script.js)
+
+
+- Riga 96 fino a 101:
+La variabile selectedTodo servirà per memorizzare il To-do ottenuto.
+getToDo ritorna una Promise cioè il To-do richiesto poi con .then() gestiamo il risultato.
+selectedTodo ora contiene il To-do ottenuto.
+Ora possiamo chiamare displayToDo con selectedTodo. Ora è possibile usare selectedTodo anche in altre funzioni.

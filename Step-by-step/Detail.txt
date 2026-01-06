@@ -1,0 +1,8 @@
+* Detail.html
+
+- Riga 23:
+Il tag pre consente di visualizzare il testo con spaziatura e formattazione preservati, ideale per mostrare codice o testo preformattato.
+
+- Riga 55: 
+Il type="module" è necessario per importare funzioni da altri file.
+In questo caso, le funzioni che mi servono sono quelle di getToDo, deleteToDo e changeDoneStatus che a sua volta sono importate dal file To-do-service.js.

@@ -1,0 +1,5 @@
+* Script.js
+
+Riga 3: Funzione per mostrare i to-dos nella pagina principale (lista di to-dos)
+
+Riga 8: A differenza di displayToDo(), qui creo gli elementi in un ciclo for perché sono più di uno.

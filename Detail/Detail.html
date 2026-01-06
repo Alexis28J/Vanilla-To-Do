@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Detail-style.css">
+    <title>To Do App</title>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <!-- <a class="back-link" href="../">🠄</a> -->
+            <a class="action" href="../">🠈</a>
+            <h1 id="todo-title"></h1>
+            <div class="colored-dot" id="todo-color"></div>
+        </header>
+
+        <main>
+            <!-- nel main vado a inserire i dettagli del to-do -->
+            <div class="detail-info">
+                <pre id="todo-description"></pre>
+            </div>
+
+            <div class="detail-info">
+                <b>Data di creazione:</b>
+                <span id="todo-creation-data"></span>
+            </div>
+
+            <div class="detail-info">
+                <b>Data di scadenza:</b>
+                <span id="todo-end-data"></span>
+            </div>
+
+            <!-- <div class="detail-info">
+                <span id="todo-color"></span>
+            </div> -->
+
+            <div class="detail-info">
+                <b>Stato:</b>
+                <span id="todo-done"></span>
+            </div>
+
+            <div>
+                <!-- <button class="text-btn" id="status-btn" onclick="changeStatus()"></button>
+                <button class="text-btn" onclick="deleteToDoAndRedirect()">Elimina</button> -->
+                <button class="text-btn" id="status-btn"></button>
+                <button class="text-btn" id="delete-btn">Elimina</button>
+            </div>     
+    </main>
+    </div>
+</body>
+<!-- <script src="./To-do-service.js"></script> -->
+<script type="module" src="./Detail-script.js"></script>
+</html>

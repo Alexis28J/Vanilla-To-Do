@@ -19,32 +19,26 @@ body {
     /* mettendolo al centro ci auterà quando ci si resiza alla versione mobile */
 }
 
-.page {
+.page{
     max-width: 800px;
     padding: 16px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
-.to-do-card {
-    margin-bottom: 4px;
-    padding: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 4px;
-}
-
-.action {
+.action{
     background-color: aliceblue;
     border: 1px solid black;
     border-radius: 50%;
     font-size: x-large;
-    width: 30px;
-    height: 30px;
-    line-height: 10px;
+    min-width: 30px;
+    min-height: 30px;
+    text-decoration: none;
+    color: black;
+    line-height: 30px;
+    text-align: center;
+    display: inline-block;
 }
 
 /* Il selettore CSS :hover serve a applicare stili speciali a un elemento quando il cursore del mouse (o un altro dispositivo di puntamento) 
@@ -55,11 +49,22 @@ e l'esperienza utente su link, pulsanti, immagini e altri elementi di un sito we
     color: aliceblue;
 }
 
-
-.action-container{
-    display: flex;
-    justify-content: flex-end;
+.text-btn{
+    padding: 8px;
+    border-radius: 30px;
+    background-color: white;
 }
 
+.colored-dot{
+    min-height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
 

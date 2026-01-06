@@ -1,0 +1,27 @@
+* To-do-service.js
+
+Riga 1: 
+Per copiare questo url, sono andato dentro del mio progetto ('To Do App') nel sito mockApi e ho cliccato su Todos (sopra la barretta) 
+e si mi è aperto una pagina con tutti i dati (api). Infine ho copiato l'url della pagina.
+
+
+Riga 3:
+export per rendere la funzione visibile anche fuori da questo file. getAllToDos è una funzione per prendere tutti i to-do.
+
+
+Riga 8 e 10:
+Converto la risposta in json.
+Poi ritorno i dati a chi mi ha chiamato (Script.js) che li userà per visualizzarli. 
+result è il nome che do io alla risposta che mi arriva dal server già convertita in json.
+
+
+Riga 17: 
+Funzione per prendere un to-do specifico in base al suo id.
+id è l'id del to-do che voglio prendere.
+
+
+Riga 32:
+Specifico che il metodo è DELETE. 
+Uso le parentesi graffe perchè passo un oggetto. 
+method è una proprietà dell'oggetto.
+La fetch di solito ammette solo un parametro, l'url, ma se voglio fare una DELETE o una POST o una PATCH, devo specificare il metodo

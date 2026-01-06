@@ -1,0 +1,17 @@
+* New-script.js
+
+- Riga 3:  Funzione per salvare il To Do
+
+- Riga 4: 
+event.preventDefault() impedisce il comportamento predefinito del form di ricaricare la pagina.
+preventDefault è una funzione integrata negli oggetti evento in JavaScript che impedisce il comportamento predefinito associato a un evento specifico.
+
+- Riga 8: FormData(form) è un oggetto che raccoglie i dati del form.
+
+- Riga 10: Questa variabile contiene i dati del nuovo todo da salvare. 
+
+- Riga 19 fino a 25: 
+Funzione che invia il nuovo todo al server. PostToDo restituisce una Promise con il todo creato.
+Poi gestiamo la Promise con .then che riceve il todo creato.
+Reset del form dopo la creazione del todo per permettere la creazione di un nuovo todo.
+Dopo la creazione del todo, reindirizza l'utente alla pagina principale.

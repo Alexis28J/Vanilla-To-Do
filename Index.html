@@ -18,28 +18,31 @@
             </header>
 
             <main>
-                <!-- <div><button id="alphabetical-btn">Ordine alfabetico</button></div> -->
+            
                 <div>
-                    <button onclick="orderByTitle()">Ordine alfabetico</button>
-                    <button onclick="orderByCreationDate()">Dal più recente al più vecchio</button>
+                    <!-- <button class="text-btn" onclick="orderByTitle()">Ordina per titolo</button>
+                    <button class="text-btn" onclick="orderByCreationDate()">Ordina per data di creazione</button> -->
+                    <button class="text-btn" id="sort-title-btn">Ordina per titolo</button>
+                    <button class="text-btn" id="sort-creation-btn">Ordina per data di creazione</button>
                 </div>
-                <!-- <div><button id="creation-date-btn">Dal più recente al più vecchio</button></div> -->
 
                 <div id="to-dos-container">
                 </div>
+
             </main>
         </div>
 
-        <div class="action-container">
-            <a class="action" href="./New.html">+</a>
+        <div class="actions-container">
+            <a class="action" href="./New/New.html">+</a>
+            <a class="action" href="./Telephone/Tel.html">📞</a>
         </div>
 
     </div>
 
 
 </body>
-
-<script src="./To-do-service.js"></script>
-<script src="./Script.js"></script>
-
+<!-- <script src="./Shared/To-do-service.js"></script> -->
+<script type="module" src="./Script.js"></script>
+<!-- il type="module" è necessario per importare funzioni da altri file -->
+ <!-- Le funzioni che mi servono sono quelle di getAllToDos che a sua volta è importata dal file To-do-service.js -->
 </html>

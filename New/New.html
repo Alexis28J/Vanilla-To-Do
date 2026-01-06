@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./New-style.css">
+    <title>Nuovo To Do</title>
+</head>
+<body>
+    <div class="page">
+        <div>
+            <header>
+                <a class="action" href="../">🠈</a>
+                <h1>Nuovo To Do</h1>
+            </header>
+
+            <main>
+
+                <!-- <form id="todo-form" onsubmit="saveTodo(event)"> -->
+                <form id="todo-form">
+                    <div class="form-group">
+                        <label for="title">Titolo</label>
+                        <input class="form-input" type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descrizione</label>
+                        <textarea class="form-input" id="description" name="description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="end-date">Data di scadenza</label>
+                        <input class="form-input" type="date" id="end-date" name="end-date">
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Colore</label>
+                        <select class="form-input" name="color" id="color">
+                            <option selected value="#00ff00">Verde</option>
+                            <option value="#ffff00">Giallo</option>
+                            <option value="#ffa500">Arancione</option>
+                            <option value="#ff0000">Rosso</option>
+                        </select>
+                    </div>
+                    <button class="text-btn" type="submit">Salva Todo</button>
+                </form>
+
+            </main>
+
+        </div>
+    </div>
+</body>
+<!-- To-do-service.js ci servirà per fare la post -->
+<!-- <script src="../shared/todo-service.js"></script> -->
+<script type="module" src="./New-script.js"></script>
+<!-- il type="module" è necessario per importare funzioni da altri file -->
+ <!-- Le funzioni che mi servono sono quelle di createToDo che a sua volta è importata dal file To-do-service.js -->
+</html>

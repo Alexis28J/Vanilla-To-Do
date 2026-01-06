@@ -1,0 +1,184 @@
+* Tel-script.js
+
+In JavaScript, fetch è un'API moderna e potente per effettuare richieste di rete HTTP asincrone (come recuperare dati da un server o API) in modo più semplice e pulito rispetto al vecchio XMLHttpRequest, 
+sfruttando le Promise per gestire le operazioni asincrone e restituire risultati in modo gestibile (come .then() e .catch()), consentendo di recuperare dati, inviare, modificare o eliminare informazioni senza ricaricare la pagina. 
+
+
+- DA RIGA 1 A RIGA 8: Costanti e riferimenti al DOM
+
+baseUrl è l’endpoint della tua resource su MockAPI. È la base che userò per tutte le chiamate (GET, POST, PUT, DELETE).
+(endpoint: punto di accesso che si connette a una rete per scambiare dati, come computer, smartphone, server, stampanti, dispositivi IoT (Internet delle Cose) o punti di accesso per API software)
+
+list: prende l’elemento <ul id="contactList"> dove andrò a mostrare i contatti.
+
+form: è il form <form id="contactForm"> usato per aggiungere/modificare contatti.
+
+search: è l’input <input id="search" placeholder="Cerca contatto..."> per la ricerca in tempo reale. 
+
+contacts: array in cui salvo localmente tutti i contatti ricevuti dall’API. Mi serve per filtrare, ordinare, ecc., senza fare una chiamata al server ogni volta.
+
+editingId : variabile che indica se stai modificando un contatto (contiene il suo id) oppure se stai creando un nuovo contatto (null).
+(questa variabile serve per tenere traccia se stiamo modificando un contatto esistente o creando uno nuovo).
+
+
+
+- DA RIGA 13 A 19: Caricamento iniziale dei contatti
+
+Una funzione asincrona in JavaScript è una funzione che permette di eseguire operazioni "non bloccanti", ovvero non interrompe il flusso principale del programma 
+mentre attende il completamento di un'attività lunga (come una chiamata di rete o un timer), continuando a eseguire altre istruzioni.
+
+loadContacts: funzione asincrona per caricare i contatti dal server (mockapi.io)
+• 	fa una richiesta GET a baseUrl con fetch(baseUrl);
+• 	aspetta la risposta (await res.json()) e la converte da JSON a oggetto JavaScript;
+• 	salva il risultato in contacts (quindi contacts è sempre il “vero stato” aggiornato);
+• 	chiama renderContacts(contacts) per mostrare i contatti in pagina.
+
+loadContacts(): viene chiamata subito, così all’apertura della pagina vedi subito la rubrica con i dati di MockAPI.
+
+
+
+- DA RIGA 24 A 35: Rendering della lista contatti
+
+Parametro data: è un array di contatti. Può essere:
+- contacts (lista completa),
+- o una versione filtrata/ordinata.
+
+list.innerHTML = "": svuota la <ul> così puoi ri-renderizzare tutto senza duplicati.
+
+data.forEach(c => { ... }):
+- per ogni contatto c, crei un <li>.
+
+document.createElement("li"): crea un nuovo elemento di lista.
+
+li.innerHTML = ...:
+- inserisci nome, telefono, email;
+- c.email || "" serve a evitare di scrivere undefined se l’email non c’è;
+
+aggiungi due pulsanti:
+- Modifica che chiama editContact('<id>');
+- Elimina che chiama deleteContact('<id>').
+
+list.appendChild(li);: aggiunge il <li> alla <ul>.
+
+Qui sto usando la tecnica dell’HTML generato via template literal per costruire velocemente la riga.
+
+
+
+- DALLA RIGA 40 ALLA 66:  Gestione submit del form (crea o modifica)
+
+form.addEventListener("submit", async (e) => { ... }):
+- intercetti l’evento di invio del form;    (async (e) => { ... } indica che la funzione è asincrona e può usare await al suo interno)
+- la callback è async perché dentro usi await per le chiamate API.
+
+e.preventDefault(): 
+- blocca il comportamento standard del form (refresh della pagina);
+(event.preventDefault() in JavaScript serve a impedire il comportamento predefinito del browser associato a un evento, come impedire a un link di navigare, 
+a un form di inviarsi, o a un menu contestuale di apparire, consentendo allo sviluppatore di gestirne l'azione in modo personalizzato tramite codice.)
+- gestisci tu manualmente il submit via JavaScript.
+
+newContact:
+- oggetto con i dati presi dagli input del form;
+- form.name, form.phone, form.email funzionano perché gli id coincidono coi name (o puoi usare document.getElementById).
+
+if (editingId) { ... } else { ... }:
+- se editingId non è null, significa che stai modificando un contatto esistente.
+- altrimenti stai creando un nuovo contatto.
+
+   Caso modifica (PUT)
+   - Fai una richiesta PUT a /contacts/<id>.
+   - body contiene il nuovo oggetto contatto in formato JSON.
+   - Alla fine rimetti editingId = null per tornare in modalità “creazione”
+
+   Caso creazione (POST)
+   - Fai una richiesta POST a /contacts.
+   - Il server crea un nuovo contatto e gli assegna un id.
+
+Dopo la chiamata
+form.reset(): svuoti gli input del form.
+
+loadContacts():
+- ricarica la lista aggiornata dal server;
+- così sei sicuro che l’interfaccia rispecchi lo stato reale sull’API.
+
+
+
+- DALLA RIGA 71 ALLA 77: Preparazione alla modifica di un contatto
+
+window.editContact = ...:
+- esponi la funzione nello scope globale (window) così può essere chiamata dagli onclick nel markup del <li>.
+
+contacts.find(x => x.id === id):
+- cerchi nel tuo array locale contacts il contatto con quell’id.
+
+form.name.value = c.name; etc.:
+- riempi gli input del form con i valori del contatto selezionato;
+- l’utente vedrà i dati nel form pronti per la modifica.
+
+editingId = id;:
+- imposti la modalità “stai modificando questo contatto”.
+- alla prossima submit, il codice farà PUT invece che POST.
+
+In pratica: il pulsante “Modifica” prende i dati dal contatto e li butta nel form
+
+
+
+- DALLA RIGA 82 ALL'85: Eliminazione di un contatto
+
+window.deleteContact:
+- anche questa esposta globalmente per gli onclick.
+
+fetch(baseUrl/{id}, { method: "DELETE" }):
+- fai una chiamata DELETE all’endpoint del contatto;
+- MockAPI elimina il record con quell’id.
+
+loadContacts():
+- ricarichi la lista aggiornata (senza il contatto appena eliminato).
+
+Se volessi, qui potrei aggiungere un confirm() per chiedere conferma prima di cancellare.
+
+
+
+- DALLA RIGA 90 AL 97:  Ricerca in tempo reale
+
+search.addEventListener("input", ...):
+- l’evento input scatta ogni volta che cambi il testo nell’input (ogni carattere digitato/cancellato).
+
+const term = search.value.toLowerCase();:
+- prende il termine di ricerca, lo rendi minuscolo per fare un confronto case-insensitive.
+
+contacts.filter(...):
+     crea un nuovo array filtered con solo i contatti che soddisfano la condizione:
+     - c.name.toLowerCase().includes(term) → il nome contiene il testo cercato;
+     - c.phone.includes(term) → il telefono contiene il testo cercato.
+
+renderContacts(filtered);:
+- mostra solo i contatti filtrati.
+- contacts comunque non viene modificato: rimane sempre la “base dati” completa.
+
+Così la ricerca non tocca il server: è tutta gestita sul client usando l’array in memoria.
+
+
+
+- DALLA RIGA 102 AL 110:  Ordinamento alfabetico
+
+document.getElementById("sortAZ").onclick = ... :
+- intercetti il click sul bottone “Ordina A → Z”.
+
+[...contacts]:
+- fa una copia dell’array contacts per non modificarlo direttamente (buona pratica, così contacts resta la versione “grezza” non ordinata).
+
+.sort((a, b) => a.name.localeCompare(b.name)):
+- ordina la copia in base al campo name;
+- localeCompare gestisce meglio le lettere accentate e l’ordinamento “umano”.
+
+renderContacts(sorted):
+- mostra i contatti ordinati.
+
+Per il bottone “Z → A”:
+- è la stessa logica, ma invertita:
+- b.name.localeCompare(a.name) → ordine alfabetico decrescente
+
+
+
+* NOTA: Se a.name (o b.name) è undefined significa che almeno uno degli oggetti dentro contacts non ha la proprietà name.
+E quando localeCompare() prova a leggere a.name (o b.name), trova undefined → boom, errore.

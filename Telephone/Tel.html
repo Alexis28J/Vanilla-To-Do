@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="../Shared/Style.css">
+  <title>Rubrica Telefonica</title>
+</head>
+<body>
+  <a class="action" href="../">🠈</a>
+  <h1>Rubrica</h1>
+
+  <input id="search" placeholder="Cerca contatto...">
+
+  <button id="sortAZ">Ordina A → Z</button>
+  <button id="sortZA">Ordina Z → A</button>
+
+  <h2>Aggiungi / Modifica Contatto</h2>
+  <form id="contactForm">
+    <input id="name" placeholder="Nome" required>
+    <input id="phone" placeholder="Telefono" required>
+    <input id="email" placeholder="Email">
+    <button type="submit">Salva</button>
+  </form>
+
+  <h2>Contatti</h2>
+  <ul id="contactList"></ul>
+
+  <script type="module" src="./Tel-script.js"></script>
+</body>
+</html>
